@@ -17,7 +17,10 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->string('autor');
             $table->string('area');
-            $table->integer('clasificacion_id');
+            $table->foreignId('clasificacion_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
