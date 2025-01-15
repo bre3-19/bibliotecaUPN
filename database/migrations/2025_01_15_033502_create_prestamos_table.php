@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
+            $table->integer('libro_id');
+            $table->integer('alumno_id');
+            $table->date('fecha_prestamo');
+            $table->date('fecha_maximo');
+            $table->date('fecha_entrega');
             $table->timestamps();
         });
     }

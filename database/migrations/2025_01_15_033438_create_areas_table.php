@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->integer('contenedor');
+            $table->enum('lado', ['Izquierdo', 'Derecho']);
+            $table->integer('nivel');
+            $table->enum('cara', ['Norte', 'Sur']);
             $table->timestamps();
         });
     }
