@@ -9,4 +9,11 @@ class Area extends Model
 {
     /** @use HasFactory<\Database\Factories\AreaFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'contenedor',
+        'lado',
+        'nivel',
+        'cara',
+    ];
 }

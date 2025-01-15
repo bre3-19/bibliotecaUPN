@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('contrasena');
             $table->string('estado');
+            $table->string('imagen_perfil')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });
