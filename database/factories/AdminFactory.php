@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin>
@@ -17,7 +19,11 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'usuario' => 'admin',
+            'email' => 'admin@gmail.com',
+            'verificacion' => now(),
+            'contrasena' => Hash::make('pass'),
+            'remember_token' => Str::random(10),
         ];
     }
 }

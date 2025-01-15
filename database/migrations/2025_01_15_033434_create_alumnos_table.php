@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('contrasena');
             $table->string('estado');
             $table->string('imagen_perfil')->nullable();
+            $table->timestamp('verificacion')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });
