@@ -18,9 +18,9 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'usuario',
+        'name',
         'email',
-        'contrasena',
+        'password',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'contrasena',
+        'password',
         'remember_token',
     ];
 
@@ -41,14 +41,14 @@ class Admin extends Authenticatable
     protected function casts(): array
     {
         return [
-            'verificacion' => 'datetime',
-            'contrasena' => 'hashed',
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
         ];
     }
 
     public function image_path() {
-        if($this->imagen_perfil) {
-            return asset('storage/images/users'.$this->imagen_perfil);
+        if($this->image) {
+            return asset('storage/images/users'.$this->image);
         } else {
             return 'https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-user-interface-kiranshastry-lineal-color-kiranshastry.png';
         }
