@@ -47,6 +47,11 @@ class AdminController extends Controller
         return redirect()->route('admin.index');
     }
 
+    public function logout() {
+        auth()->guard('admin')->logout();
+        return redirect()->route('admin.index');
+    }
+
     public function auth(AuthAdminRequest $request) {
         if($request->validated()) {
             if(auth()->guard('admin')->attempt([

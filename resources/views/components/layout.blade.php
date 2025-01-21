@@ -13,7 +13,7 @@
         <nav id="navbar" class="sticky top-0 z-40 flex w-full flex-row justify-end bg-[#115cab] px-4 sm:justify-between">
             <ul class="breadcrumb hidden flex-row items-center py-4 text-lg text-white sm:flex">
                 <li class="inline">
-                    <a href="#">Dashboard</a>
+                    <a href="{{ route('admin.index') }}">Dashboard</a>
                 </li>
                 <li class="inline">
                     <span>General</span>
@@ -41,7 +41,10 @@
                     <a href="#">Imagen</a>
                 </li>
                 <li class="inline px-2">
-                    <a href="#">Salir</a>
+                    <a onclick="document.getElementById('AdminLogoutForm').submit()" href="#">Cerrar Sesión</a>
+                    <form id="AdminLogoutForm" action="{{ route('admin.logout') }}" method="POST">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -60,7 +63,7 @@
                         <ul class="mb-8 text-sm font-medium">
                             <li>
                                 <a class="active flex items-center rounded py-3 pl-3 pr-4"
-                                    href="#homepage">
+                                    href="{{ route('admin.index') }}">
                                     <span class="select-none">General</span>
                                 </a>
                             </li>
