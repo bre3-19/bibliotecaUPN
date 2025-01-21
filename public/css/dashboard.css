@@ -1,0 +1,32 @@
+ul.breadcrumb li+li::before {
+    content: "\276F";
+    padding-left: 8px;
+    padding-right: 4px;
+    color: inherit;
+}
+
+ul.breadcrumb li span {
+    opacity: 60%;
+}
+
+#sidebar.show {
+    transform: translateX(0);
+}
+
+#sidebar ul li a {
+    color: #f1f7fe;
+}
+
+#sidebar h3 {
+    color: #f1f7fe;
+}
+
+#sidebar ul li a:hover {
+    background: #11447b;
+    background-color: #11447b;
+}
+
+#sidebar ul li a.active {
+    background: #143a66;
+    background-color: #143a66;
+}

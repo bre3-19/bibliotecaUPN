@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('lado', ['Izquierdo', 'Derecho']);
             $table->integer('nivel');
             $table->enum('cara', ['Norte', 'Sur']);
+            $table->integer('numero');
             $table->timestamps();
         });
     }

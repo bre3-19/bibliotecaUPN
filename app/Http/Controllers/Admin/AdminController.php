@@ -5,25 +5,38 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthAdminRequest;
-use App\Models\Order;
+use App\Models\Prestamo;
+use App\Models\Libro;
 use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function index() {
-        $bookTotal = 0;
-        $bookTesis = 0;
-        $bookBooks = 0;
-        $bookTales = 0;
-        $loanToday = Order::whereDay('created_at', Carbon::today())->get();
-        $loanTotal = 0;
+        //Tesis
+        $bookTesis = Libro::where('tipo', 'Tesis')->get();
+
+        //Libros
+        $bookBooks = Libro::where('tipo', 'Libro')->get();
+
+        //Otros
+        $bookTales = Libro::where('tipo', 'Otros')->get();
+
+        //Prestamos de hoy
+        $loanToday = Prestamo::whereDay('fecha_prestamo', Carbon::today())->get();
+
+        //Prestamos sin devolver
+        $loanTotal = Prestamo::whereDay('fecha_maximo', '<=', Carbon::today())->whereNull('fecha_entrega')->get();
+
+        //Prestamos atrasados
+        $loanDated = Prestamo::whereDay('fecha_maximo', '>', Carbon::today())->whereNull('fecha_entrega')->get();
+
         return view ('admin.index')->with([
-            'bookTotal' => $bookTotal,
             'bookTesis' => $bookTesis,
             'bookBooks' => $bookBooks,
             'bookTales' => $bookTales,
             'loanToday' => $loanToday,
             'loanTotal' => $loanTotal,
+            'loanDated' => $loanDated,
         ]);
     }
 

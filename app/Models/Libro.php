@@ -16,6 +16,8 @@ class Libro extends Model
         'cantidad',
         'autor',
         'area',
+        'anio',
+        'tipo',
     ];
 
     public function clasificacion(): HasOne {

@@ -15,5 +15,6 @@ class Area extends Model
         'lado',
         'nivel',
         'cara',
+        'numero',
     ];
 }

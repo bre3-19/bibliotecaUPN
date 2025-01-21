@@ -21,9 +21,9 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->date('fecha_prestamo');
-            $table->date('fecha_maximo');
-            $table->date('fecha_entrega');
+            $table->timestamp('fecha_prestamo');
+            $table->timestamp('fecha_maximo')->nullable();
+            $table->timestamp('fecha_entrega')->nullable();
             $table->timestamps();
         });
     }

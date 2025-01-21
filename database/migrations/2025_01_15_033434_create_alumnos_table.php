@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
+
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string('name');

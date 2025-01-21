@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->string('autor');
             $table->string('area');
+            $table->integer('anio');
+            $table->enum('tipo', ['Libro', 'Tesis', 'Otro']);
             $table->foreignId('clasificacion_id')
                 ->constrained()
                 ->onUpdate('cascade')
