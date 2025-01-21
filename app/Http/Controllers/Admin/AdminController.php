@@ -12,6 +12,9 @@ use Carbon\Carbon;
 class AdminController extends Controller
 {
     public function index() {
+        //Data
+        $bookData = Libro::all();
+
         //Tesis
         $bookTesis = Libro::where('tipo', 'Tesis')->get();
 
@@ -31,6 +34,7 @@ class AdminController extends Controller
         $loanDated = Prestamo::whereDay('fecha_maximo', '>', Carbon::today())->whereNull('fecha_entrega')->get();
 
         return view ('admin.index')->with([
+            'bookData' => $bookData,
             'bookTesis' => $bookTesis,
             'bookBooks' => $bookBooks,
             'bookTales' => $bookTales,

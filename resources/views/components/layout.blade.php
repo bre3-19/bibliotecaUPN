@@ -21,7 +21,7 @@
             </ul>
             <ul id="btnSidebarToggler" class="breadcrumb hidden flex-row items-center py-4 px-3 text-lg text-white sm:flex"> 
                 <li class="inline">
-                    <span>{{ $bookTotal->count() }} Ejemplares</span>
+                    <span>{{ $bookTotal }} Ejemplares</span>
                 </li>
             </ul>
         </nav>
