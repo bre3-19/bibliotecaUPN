@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <script src="{{ asset('js/dashboard.js') }}"> </script>
+        <script src="https://kit.fontawesome.com/336c69a1a6.js" crossorigin="anonymous"> </script>
         @vite('resources/css/app.css')
     </head>
 
     <body>
         <!--Navbar-->
-        <nav id="navbar" class="sticky top-0 z-40 flex w-full flex-row justify-end bg-[#115cab] px-4 sm:justify-between">
+        <nav id="navbar" class="sticky shadow-lg top-0 z-40 flex w-full flex-row justify-end bg-[#115cab] px-4 sm:justify-between">
             <ul class="breadcrumb hidden flex-row items-center py-4 text-lg text-white sm:flex">
                 <li class="inline">
                     <a href="{{ route('admin.index') }}">Dashboard</a>
@@ -111,14 +112,14 @@
                         <ul class="mb-8 text-sm font-medium">
                             <li>
                                 <a class="flex items-center rounded py-3 pl-3 pr-4"
-                                    href="#ex1">
-                                    <span class="select-none">Agregar libro</span>
+                                    href="{{ route('admin.libro.create') }}">
+                                    <span class="select-none">Agregar Libro</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="flex items-center rounded py-3 pl-3 pr-4"
                                     href="#ex2">
-                                    <span class="select-none">Modificar libro</span>
+                                    <span class="select-none">Agregar Clasificación</span>
                                 </a>
                             </li>
                         </ul>

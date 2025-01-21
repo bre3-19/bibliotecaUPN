@@ -20,5 +20,16 @@ Route::middleware('admin')->group(function() {
             'update' => 'admin.libro.update',
             'destroy' => 'admin.libro.destroy',
         ]
-        ]);
+    ]);
+
+    Route::resource('clasificacion', LibroController::class, [
+        'names' => [
+            'index' => 'admin.clasificacion.index',
+            'create' => 'admin.clasificacion.create',
+            'store' => 'admin.clasificacion.store',
+            'edit' => 'admin.clasificacion.edit',
+            'update' => 'admin.clasificacion.update',
+            'destroy' => 'admin.clasificacion.destroy',
+        ]
+    ]);
 });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuthAdminRequest;
 use App\Models\Prestamo;
 use App\Models\Libro;
+use App\Models\Clasificacion;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -16,13 +17,13 @@ class AdminController extends Controller
         $bookData = Libro::all();
 
         //Tesis
-        $bookTesis = Libro::where('tipo', 'Tesis')->get();
+        $bookTesis = Libro::where('tipo', 'Tesis')->count();
 
         //Libros
-        $bookBooks = Libro::where('tipo', 'Libro')->get();
+        $bookBooks = Libro::where('tipo', 'Libro')->count();
 
         //Otros
-        $bookTales = Libro::where('tipo', 'Otros')->get();
+        $bookTales = Libro::where('tipo', 'Otros')->count();
 
         //Prestamos de hoy
         $loanToday = Prestamo::whereDay('fecha_prestamo', Carbon::today())->get();
