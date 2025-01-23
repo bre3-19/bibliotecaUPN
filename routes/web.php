@@ -11,6 +11,10 @@ Route::middleware('admin')->group(function() {
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+    Route::get('admin/libro/create', [LibroController::class, 'create'])->name('admin.libro.create');
+    Route::get('admin/libro/edit', [LibroController::class, 'edit'])->name('admin.libro.show');
+    Route::post('admin/libro/edit', [LibroController::class, 'update'])->name('admin.libro.update');
+
     Route::resource('libro', LibroController::class, [
         'names' => [
             'index' => 'admin.libro.index',

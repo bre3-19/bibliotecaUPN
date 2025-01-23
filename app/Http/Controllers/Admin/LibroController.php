@@ -9,19 +9,11 @@ use Illuminate\Http\Request;
 class LibroController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.libro.addEdit');
     }
 
     /**
@@ -29,7 +21,13 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->validated()) {
+            Libro::create($request->validated());
+
+            return redirect()->route('admin.index')->with([
+                'success' => 'El libro se ha registrado correctamente'
+            ]);
+        }
     }
 
     /**
@@ -37,7 +35,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -45,7 +43,9 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        return view('admin.libro.edit')->with([
+            $libro
+        ]);
     }
 
     /**

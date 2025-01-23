@@ -29,7 +29,7 @@
         <!--End-->
 
         <!--User-->
-        <nav id="navbar" class="sticky shadow-lg top-1 z-40 flex w-full flex-row bg-[#e3e6e1] px-4 sm:justify-between">
+        <nav id="navbar" class="sticky shadow-lg top-0 z-40 flex w-full flex-row bg-[#e3e6e1] px-4 sm:justify-between">
             <ul class="breadcrumb hidden flex-row items-center py-4 text-lg text-white sm:flex">
                 <li class="inline">
                 </li>
@@ -55,7 +55,7 @@
         <div id="containerSidebar" class="z-40">
             <div class="navbar-menu relative z-40">
                 <nav id="sidebar"
-                    class="fixed left-0 bottom-0 flex w-3/4 flex-col overflow-y-auto bg-[#104e94] pt-6 pb-8 sm:max-w-xs lg:w-60">
+                    class="fixed left-0 bottom-0 h-screen flex w-3/4 flex-col overflow-y-auto bg-[#104e94] pt-6 pb-8 sm:max-w-xs lg:w-60">
                     <!--General-->
                     <div class="px-4 pb-6">
                         <h3 class="mb-2 text-xs font-medium uppercase">
