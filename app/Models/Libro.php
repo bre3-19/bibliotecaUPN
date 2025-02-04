@@ -15,13 +15,18 @@ class Libro extends Model
         'titulo',
         'cantidad',
         'autor',
-        'area',
         'anio',
         'tipo',
+        'imagen',
+        'contenedor',
+        'lado',
+        'nivel',
+        'cara',
+        'numero',
     ];
 
-    public function clasificacion(): HasOne {
-        return $this->hasOne(Clasificacion::class);
+    public function clasificacion() {
+        return $this->belongsTo(Clasificacion::class);
     }
 
     public function prestamo(): HasOne {

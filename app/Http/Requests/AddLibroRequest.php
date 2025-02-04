@@ -27,6 +27,7 @@ class AddLibroRequest extends FormRequest
             'autor' => 'required|max:255',
             'anio' => 'required||numeric',
             'tipo' => 'required|max:255',   
+            'imagen' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }
 

@@ -16,13 +16,20 @@ return new class extends Migration
             $table->string('titulo');
             $table->integer('cantidad');
             $table->string('autor');
-            $table->string('area');
             $table->integer('anio');
             $table->enum('tipo', ['Libro', 'Tesis', 'Otro']);
+            $table->integer('contenedor');
+            $table->string('lado');
+            $table->integer('nivel');
+            $table->enum('cara', ['Norte', 'Sur']);
+            $table->integer('numero');
+            $table->string('imagen')->nullable();
+
             $table->foreignId('clasificacion_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

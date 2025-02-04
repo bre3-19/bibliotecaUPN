@@ -23,7 +23,7 @@ class AdminController extends Controller
         $bookBooks = Libro::where('tipo', 'Libro')->count();
 
         //Otros
-        $bookTales = Libro::where('tipo', 'Otros')->count();
+        $bookTales = Libro::where('tipo', 'Otro')->count();
 
         //Prestamos de hoy
         $loanToday = Prestamo::whereDay('fecha_prestamo', Carbon::today())->get();

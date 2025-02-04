@@ -6,6 +6,7 @@
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <script src="{{ asset('js/dashboard.js') }}"> </script>
         <script src="https://kit.fontawesome.com/336c69a1a6.js" crossorigin="anonymous"> </script>
+        <link rel="stylesheet" href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css"></script>
         @vite('resources/css/app.css')
     </head>
 
@@ -16,9 +17,30 @@
                 <li class="inline">
                     <a href="{{ route('admin.index') }}">Dashboard</a>
                 </li>
-                <li class="inline">
-                    <span>General</span>
-                </li>
+                @switch(true)
+                    @case(request()->routeIs('admin.index'))
+                        <li class="inline">
+                            <span>General</span>
+                        </li>
+                        @break
+                
+                    @case(request()->routeIs('admin.clasificacion.index'))
+                        <li class="inline">
+                            <span>Clasificaciones</span>
+                        </li>
+                        @break
+                    
+                    @case(request()->routeIs('admin.libro.create'))
+                        <li class="inline">
+                            <span>Añadir Libro</span>
+                        </li>
+                        @break
+                
+                    @default
+                        <li class="inline">
+                            <span>General</span>
+                        </li>
+                @endswitch
             </ul>
             <ul id="btnSidebarToggler" class="breadcrumb hidden flex-row items-center py-4 px-3 text-lg text-white sm:flex"> 
                 <li class="inline">
@@ -36,13 +58,14 @@
             </ul>    
             <ul class="flex-row items-center py-4 px-1 text-lg text-gray-600 sm:flex">
                 <li class="inline px-2">
-                    <a href="#">Usuario</a>
-                </li>
-                <li class="inline px-2">
                     <a href="#">Imagen</a>
                 </li>
                 <li class="inline px-2">
-                    <a onclick="document.getElementById('AdminLogoutForm').submit()" href="#">Cerrar Sesión</a>
+                    <button type="button" onclick="document.getElementById('AdminLogoutForm').submit()"
+                     class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 
+                    font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                        Cerrar Sesión
+                    </button>
                     <form id="AdminLogoutForm" action="{{ route('admin.logout') }}" method="POST">
                         @csrf
                     </form>
@@ -63,15 +86,15 @@
                         </h3>
                         <ul class="mb-8 text-sm font-medium">
                             <li>
-                                <a class="active flex items-center rounded py-3 pl-3 pr-4"
+                                <a class="{{ request()->routeIs('admin.index') ? 'active' : '' }} flex items-center rounded py-3 pl-3 pr-4"
                                     href="{{ route('admin.index') }}">
                                     <span class="select-none">General</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="flex items-center rounded py-3 pl-3 pr-4"
-                                    href="#link1">
-                                    <span class="select-none">Libros</span>
+                                <a class="{{ request()->routeIs('admin.clasificacion.index') ? 'active' : '' }} flex items-center rounded py-3 pl-3 pr-4"
+                                    href="{{ route('admin.clasificacion.index') }}">
+                                    <span class="select-none">Clasificaciones</span>
                                 </a>
                             </li>
                         </ul>
@@ -111,15 +134,15 @@
                         </h3>
                         <ul class="mb-8 text-sm font-medium">
                             <li>
-                                <a class="flex items-center rounded py-3 pl-3 pr-4"
+                                <a class="{{ request()->routeIs('admin.libro.create') ? 'active' : '' }} flex items-center rounded py-3 pl-3 pr-4"
                                     href="{{ route('admin.libro.create') }}">
-                                    <span class="select-none">Agregar Libro</span>
+                                    <span class="select-none">Añadir Libro</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="flex items-center rounded py-3 pl-3 pr-4"
                                     href="#ex2">
-                                    <span class="select-none">Agregar Clasificación</span>
+                                    <span class="select-none">Añadir Clasificación</span>
                                 </a>
                             </li>
                         </ul>

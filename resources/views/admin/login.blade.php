@@ -21,7 +21,7 @@
 
         <div class="flex flex-row gap-3 pb-4 mt-4">
                 <div>
-                    <img src="{{url('/images/logo.png')}}" alt="Logo" width="100">
+                    <img src="{{ url('/images/logo.png') }}" alt="Logo" width="100">
                 </div>
                 <!---->
                 <h1 class="text-3xl font-bold text-[231f20] text-[231f20] my-auto">Universidad Pedagógica Nacional</h1>

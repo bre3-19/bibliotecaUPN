@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LibroController;
+use App\Http\Controllers\Admin\ClasificacionController;
 
 Route::get('/', [AdminController::class, 'login'])->name('admin.login');
 Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
@@ -26,7 +27,9 @@ Route::middleware('admin')->group(function() {
         ]
     ]);
 
-    Route::resource('clasificacion', LibroController::class, [
+    Route::get('admin/libro/{id}', [LibroController::class, 'show'])->name('admin.libro.details');
+
+    Route::resource('clasificacion', ClasificacionController::class, [
         'names' => [
             'index' => 'admin.clasificacion.index',
             'create' => 'admin.clasificacion.create',

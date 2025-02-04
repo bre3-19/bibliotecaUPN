@@ -12,7 +12,7 @@ class Clasificacion extends Model
 
     protected $fillable = ['clasificacion'];
 
-    public function libro(): HasOne {
-        return $this->hasOne(Libro::class);
+    public function libros() {
+        return $this->hasMany(Libro::class);
     }
 }

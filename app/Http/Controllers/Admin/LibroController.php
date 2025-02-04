@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Libro;
+use App\Models\Clasificacion;
 use Illuminate\Http\Request;
 
 class LibroController extends Controller
@@ -13,7 +14,9 @@ class LibroController extends Controller
      */
     public function create()
     {
-        return view('admin.libro.addEdit');
+        $clasificaciones = Clasificacion::all();
+
+        return view('admin.libro.addEdit', compact('clasificaciones'));
     }
 
     /**
@@ -22,7 +25,12 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         if($request->validated()) {
+            $image_path = '';
+                if ($request->hasFile('image')) {
+            $image_path = $request->file('imagen')->store('imagen', 'public');
+            
             Libro::create($request->validated());
+        }
 
             return redirect()->route('admin.index')->with([
                 'success' => 'El libro se ha registrado correctamente'
@@ -33,9 +41,12 @@ class LibroController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Libro $libro)
+    public function show($id)
     {
-        abort(404);
+        $book = Libro::where('id', $id)->get();
+
+        return view('admin.libro.details', compact('book'));
+        //abort(404);
     }
 
     /**
